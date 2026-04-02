@@ -1,7 +1,3 @@
-Since you're looking for a deep dive, let’s break down every single concept you mentioned. We will treat these as the building blocks of web design.
-
----
-
 # Comprehensive Guide to CSS Fundamentals
 
 ## 1. Introduction to CSS
