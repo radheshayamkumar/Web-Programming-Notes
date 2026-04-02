@@ -1,281 +1,789 @@
-📘 Web Technology – JavaScript (Detailed Notes)
+# JavaScript Fundamentals: A Beginner's Guide
+
+Welcome to the world of JavaScript! Whether you're building interactive websites or complex server-side applications, these core concepts are the building blocks of everything you'll create.
+
+---
+
 ## 1. Introduction to JavaScript
+JavaScript (JS) is a lightweight, interpreted programming language with first-class functions. While it’s most famous as the scripting language for Web pages, many non-browser environments also use it, such as Node.js.
 
-JavaScript is a high-level, interpreted programming language used to create dynamic and interactive web pages. It runs inside the browser (client-side) but can also run on servers (using Node.js).
+* **What it does:** It makes websites interactive (think buttons, sliders, and live updates).
+* **Where it runs:** Every modern web browser has a built-in JavaScript engine (like Chrome's V8).
 
-🔹 Why JavaScript?
-Adds interactivity (buttons, forms, animations)
-Works with HTML + CSS
-Enables dynamic content updates without reloading
-🔹 Example:
-<script>
-  document.write("Hello, JavaScript!");
-</script>
-
-👉 Without JavaScript → websites are static
-👉 With JavaScript → websites become interactive
+---
 
 ## 2. Values and Variables
-🔹 Values
+In JavaScript, **Values** are the data itself (like the number 5 or the word "Hello"), and **Variables** are containers used to store those values.
 
-Values are the data stored in variables.
+### Declaring Variables
+There are three main ways to declare a variable:
+1.  **`let`**: Used for values that might change (block-scoped).
+2.  **`const`**: Used for values that stay the same (constants).
+3.  **`var`**: The older way (generally avoided in modern JS).
 
-Types of values:
+```javascript
+const name = "Alex"; // This value won't change
+let age = 25;        // This value can be updated
+age = 26;            // Updating the value
+```
 
-Number → 10, 3.14
-String → "Hello"
-Boolean → true, false
-Undefined → variable declared but not assigned
-Null → intentionally empty
-🔹 Variables
+### Data Types
+* **String:** Text wrapped in quotes (e.g., `"Hello"`).
+* **Number:** Integers or decimals (e.g., `10`, `3.14`).
+* **Boolean:** True or false (e.g., `true`, `false`).
+* **Undefined:** A variable that has been declared but not assigned a value.
+* **Null:** An intentional "empty" value.
 
-Variables store values in memory.
+---
 
-var name = "Radhe";
-let age = 25;
-const pi = 3.14;
-🔹 Difference:
-Keyword	Scope	Reassign	Use Case
-var	Function	Yes	Old JS
-let	Block	Yes	Preferred
-const	Block	No	Constants
+## 3. Operators
+Operators allow us to perform actions on variables and values.
 
-👉 Mistake students make: using var everywhere → avoid it.
+### Arithmetic Operators
+Used for math:
+* `+` (Addition), `-` (Subtraction), `*` (Multiplication), `/` (Division).
+* `%` (Remainder/Modulus): Returns what's left over after division.
 
-## 3. Operators in JavaScript
+### Assignment Operators
+Used to assign values:
+* `=` : Simple assignment.
+* `+=` : Add and assign (e.g., `x += 5` is the same as `x = x + 5`).
 
-Operators perform operations on variables.
+### Comparison Operators
+Used to compare two values (returns `true` or `false`):
+* `===` : Strict equality (checks value AND type).
+* `!==` : Not equal.
+* `>` / `<` : Greater than / Less than.
 
-🔹 Types:
-1. Arithmetic Operators
-let a = 10, b = 5;
-console.log(a + b); // 15
-console.log(a % b); // 0
-2. Assignment Operators
-let x = 10;
-x += 5; // x = x + 5
-3. Comparison Operators
-console.log(10 == "10");  // true
-console.log(10 === "10"); // false
+---
 
-👉 === is strict → always prefer it
+## 4. Statements (Conditional)
+Statements are the "logic" of your code. They allow the program to make decisions.
 
-4. Logical Operators
-console.log(true && false); // false
-console.log(true || false); // true
-## 4. Loops and Control Statements
-🔹 Loops
+### If-Else Statement
+```javascript
+let weather = "sunny";
 
-Used to repeat code.
-
-for loop
-for(let i = 1; i <= 5; i++){
-  console.log(i);
+if (weather === "sunny") {
+    console.log("Wear sunglasses!");
+} else {
+    console.log("Take an umbrella.");
 }
-while loop
-let i = 1;
-while(i <= 5){
-  console.log(i);
-  i++;
+```
+
+### Switch Statement
+Useful when you have many "cases" to check against a single value.
+```javascript
+let day = "Monday";
+
+switch (day) {
+    case "Monday":
+        console.log("Start of the work week!");
+        break;
+    case "Friday":
+        console.log("Weekend is near!");
+        break;
+    default:
+        console.log("Just another day.");
 }
-🔹 Conditional Statements
-let age = 20;
+```
 
-if(age >= 18){
-  console.log("Adult");
-}else{
-  console.log("Minor");
+---
+
+## 5. Loops
+Loops are used to run the same block of code multiple times.
+
+### For Loop
+Best when you know exactly how many times you want to repeat something.
+```javascript
+// for (initialization; condition; increment)
+for (let i = 1; i <= 3; i++) {
+    console.log("Iteration number: " + i);
 }
-🔹 Switch Case
-let day = 1;
+// Output: 1, 2, 3
+```
 
-switch(day){
-  case 1: console.log("Monday"); break;
-  case 2: console.log("Tuesday"); break;
+### While Loop
+Runs as long as a specific condition is `true`.
+```javascript
+let energy = 3;
+
+while (energy > 0) {
+    console.log("Keep running...");
+    energy--; // Decreasing energy each time
 }
-## 5. Date Object
+console.log("Tired now!");
+```
 
-Used to work with date and time.
 
-let date = new Date();
 
-console.log(date); // full date
-console.log(date.getFullYear());
-console.log(date.getMonth()); // 0-11
-console.log(date.getDate());
+---
 
-👉 Important: Month starts from 0 (January)
+## Summary Table
 
-## 6. Math Object
+| Concept | Purpose | Example |
+| :--- | :--- | :--- |
+| **Variable** | Store data | `let score = 0;` |
+| **Operator** | Perform actions | `score + 10` |
+| **If Statement** | Decision making | `if (score > 50) { ... }` |
+| **Loop** | Repeat actions | `for (i=0; i<5; i++)` |
 
-Provides built-in math functions.
 
-console.log(Math.PI);
-console.log(Math.sqrt(25)); // 5
-console.log(Math.random()); // 0 to 1
-console.log(Math.floor(4.7)); // 4
-## 7. String Object
 
-Used to manipulate text.
+---
 
-let str = "Hello World";
+Continuing with our JavaScript journey, let’s dive into the "Objects" that allow JS to interact with data, the browser, and the user.
 
-console.log(str.length);
-console.log(str.toUpperCase());
-console.log(str.toLowerCase());
-console.log(str.substring(0,5));
-## 8. Window Object
+---
 
-Represents browser window.
+## 1. Built-in Objects (Date, Math, String)
 
-alert("Hello");
-confirm("Are you sure?");
-prompt("Enter your name:");
+JavaScript provides built-in "tools" (objects) to handle common tasks like calculations, time, and text manipulation.
 
-👉 It is the global object in browser.
+### Date Object
+Used to work with dates and times.
+* **Example:**
+  ```javascript
+  const now = new Date(); 
+  console.log(now.toDateString()); // "Thu Apr 02 2026"
+  console.log(now.getFullYear()); // 2026
+  ```
 
-## 9. Window Events
+### Math Object
+Allows you to perform mathematical tasks on numbers. Unlike other objects, you don't need to "create" it; you just use it.
+* **Common Methods:** `Math.round()`, `Math.floor()`, `Math.random()`.
+* **Example:**
+  ```javascript
+  let pi = Math.PI;             // 3.14159...
+  let randomNum = Math.random(); // Random number between 0 and 1
+  let power = Math.pow(2, 3);    // 2 to the power of 3 (8)
+  ```
 
-Triggered by user or browser actions.
+### String Object
+Used to manipulate sequences of characters.
+* **Example:**
+  ```javascript
+  let text = "JavaScript is Fun";
+  console.log(text.length);      // 17
+  console.log(text.toUpperCase()); // "JAVASCRIPT IS FUN"
+  console.log(text.includes("Fun")); // true
+  ```
 
-window.onload = function(){
-  alert("Page Loaded");
-};
-Common events:
-onclick
-onload
-onresize
-## 10. Working with Forms
+---
 
-Used to collect user input.
+## 2. The Browser Object Model (BOM)
+These objects represent the browser itself, rather than the specific webpage content.
 
-<form onsubmit="return validate()">
-  <input type="text" id="name">
-  <input type="submit">
-</form>
 
-<script>
-function validate(){
-  let name = document.getElementById("name").value;
-  if(name == ""){
-    alert("Enter name");
-    return false;
+
+### Window Events
+The `window` object represents the browser window. Events are things that happen to the window.
+* **Example:**
+  ```javascript
+  // Runs when the whole page finishes loading
+  window.onload = () => {
+      console.log("Page is fully loaded!");
+  };
+
+  // Runs when the window is resized
+  window.onresize = () => {
+      console.log("Window size changed!");
+  };
+  ```
+
+### Screen Object
+Contains information about the visitor's screen (resolution, depth, etc.).
+* **Example:** `console.log(screen.width);` // Returns screen width in pixels.
+
+### Navigator Object
+Contains information about the browser (name, version, platform).
+* **Example:** `console.log(navigator.onLine);` // Returns true if the browser is online.
+
+---
+
+## 3. The Document Object Model (DOM)
+The `document` object is the root of your webpage. Use it to change HTML and CSS.
+
+### Document Object
+* **Example:**
+  ```javascript
+  // Change the text of an element with id="title"
+  document.getElementById("title").innerHTML = "Hello World!";
+  
+  // Change the background color
+  document.body.style.backgroundColor = "lightblue";
+  ```
+
+---
+
+## 4. Working with Forms
+JavaScript can capture and validate what a user types into a form.
+* **Example:**
+  ```javascript
+  function validateForm() {
+      let x = document.forms["myForm"]["fname"].value;
+      if (x === "") {
+          alert("Name must be filled out");
+          return false;
+      }
+  }
+  ```
+
+---
+
+## 5. Images and Animation
+JavaScript can change images dynamically or move elements to create animations.
+
+### Handling Images
+You can change the `src` attribute of an image to swap it.
+```javascript
+function changeImage() {
+    document.getElementById("myImg").src = "landscape.jpg";
+}
+```
+
+### Simple Animation
+Using `setInterval()` or `requestAnimationFrame()` to move an element.
+```javascript
+let pos = 0;
+const box = document.getElementById("animateBox");
+
+function move() {
+  if (pos < 150) {
+    pos++;
+    box.style.left = pos + "px"; // Moves the box 1px to the right
   }
 }
-</script>
 
-👉 Key concept: Form validation
+setInterval(move, 10); // Runs move() every 10 milliseconds
+```
 
-## 11. Document Object (DOM)
+---
 
-Represents HTML page structure.
+## Summary Cheat Sheet
 
-document.getElementById("demo").innerHTML = "Hello";
-Common methods:
-getElementById()
-getElementsByClassName()
-querySelector()
+| Object | What it handles |
+| :--- | :--- |
+| **Date** | Calendars, clocks, and timestamps. |
+| **Math** | Complex calculations and random numbers. |
+| **String** | Searching and modifying text. |
+| **Window** | Browser alerts, resizing, and loading. |
+| **Document** | HTML elements, CSS styles, and text on page. |
+| **Navigator** | Browser info and internet connection status. |
 
-👉 DOM = bridge between JS and HTML
 
-## 12. Screen Object
 
-Gives screen information.
+----
 
-console.log(screen.width);
-console.log(screen.height);
-## 13. Navigator Object
+In JavaScript, **Objects** are the most important data type. They allow you to group related data and functions together into a single "package."
 
-Provides browser details.
+---
 
-console.log(navigator.userAgent);
-console.log(navigator.language);
+## 1. Objects: Declaration, Definition, and Referencing
 
-👉 Used for browser detection.
+### A. Declaration and Definition
+There are two main ways to create (declare and define) an object:
 
-## 14. Images and Animation
-🔹 Changing Image
-document.getElementById("img").src = "new.jpg";
-🔹 Animation Example
-let pos = 0;
+1.  **Object Literal (Most Common):** You define the properties inside curly braces `{}`.
+2.  **Object Constructor:** Using the `new Object()` syntax.
 
-function move(){
-  pos++;
-  document.getElementById("box").style.left = pos + "px";
-}
-
-setInterval(move, 10);
-
-👉 Core concept: DOM + timing functions
-
-## 15. JavaScript Objects
-🔹 Declaration
-let obj = {};
-🔹 Definition
-let person = {
-  name: "Radhe",
-  age: 25
+```javascript
+// 1. Object Literal (Declaration + Definition)
+const car = {
+    brand: "Tesla",     // Property
+    model: "Model 3",   // Property
+    start: function() { // Method (a function inside an object)
+        console.log("Engine started!");
+    }
 };
-🔹 Accessing
-console.log(person.name);
-console.log(person["age"]);
-## 16. Identifiers and Scope Rules
-🔹 Identifiers Rules:
-Cannot start with number
-No spaces
-Case-sensitive
-🔹 Scope Types
-Type	Description
-Global	Accessible everywhere
-Local	Inside function
-Block	Inside {}
-let x = 10;
 
-function test(){
-  let y = 5;
+// 2. Object Constructor
+const user = new Object();
+user.name = "John";
+user.age = 30;
+```
+
+### B. Referencing Properties
+Once an object is defined, you can access or "reference" its data using two methods:
+
+* **Dot Notation:** `object.property`
+* **Bracket Notation:** `object["property"]` (Useful when the property name is stored in a variable).
+
+```javascript
+console.log(car.brand);      // Tesla
+console.log(car["model"]);   // Model 3
+```
+
+---
+
+## 2. Identifiers
+An **Identifier** is simply a name you give to variables, functions, or objects. In JavaScript, there are specific rules for naming them:
+
+* **Case Sensitive:** `myVar` and `myvar` are different.
+* **Allowed Characters:** Must start with a letter, underscore (`_`), or dollar sign (`$`). They cannot start with a number.
+* **No Reserved Words:** You cannot name a variable `let`, `function`, or `if`.
+
+---
+
+## 3. Scope Rules
+**Scope** determines where a variable or identifier is accessible within your code.
+
+
+
+### A. Global Scope
+Variables declared outside any function or curly braces are in the **Global Scope**. They can be accessed from anywhere in your script.
+```javascript
+const globalName = "Alex";
+
+function sayName() {
+    console.log(globalName); // Accessible here
 }
-## 17. Recursion
+```
 
-Function calling itself.
+### B. Function Scope
+Variables declared inside a `function` using `var`, `let`, or `const` are only accessible inside that function.
+```javascript
+function greet() {
+    let message = "Hello!"; 
+    console.log(message); // Works
+}
+// console.log(message); // Error: message is not defined
+```
 
-function factorial(n){
-  if(n == 1) return 1;
-  return n * factorial(n - 1);
+### C. Block Scope (`let` and `const`)
+Introduced in modern JS (ES6), **Block Scope** means a variable is only available inside the specific curly braces `{}` where it was created (like an `if` statement or a `loop`).
+* **Note:** `var` does **not** support block scope, which is why we prefer `let` and `const`.
+
+```javascript
+if (true) {
+    let blockVar = "I am trapped in this if block";
+    var functionVar = "I can escape the if block!";
 }
 
-👉 Risk: infinite recursion → stack overflow
+// console.log(blockVar);    // Error
+console.log(functionVar); // Works (because var ignores blocks)
+```
 
-## 18. Arrays
-🔹 Declaration
-let arr = [10, 20, 30];
-🔹 Access
-console.log(arr[0]);
-🔹 Methods
-arr.push(40);
-arr.pop();
-arr.sort();
-## 19. Built-in Objects
-🔹 Math
-Math.max(10,20);
-🔹 String
-"hello".toUpperCase();
-🔹 Date
-new Date();
-🔹 Number
-let num = 10;
-num.toString();
-🔹 Boolean
-let flag = true;
-## 20. Document (Detailed)
+---
 
-Document is part of DOM used to manipulate HTML.
+## Summary Table
 
-document.write("Hello");
-document.getElementById("id");
-document.querySelector(".class");
+| Concept | Rule |
+| :--- | :--- |
+| **Object Literal** | Uses `{ key: value }` |
+| **Dot Notation** | `obj.key` (Cleaner syntax) |
+| **Bracket Notation** | `obj["key"]` (Flexible for variables) |
+| **Global Scope** | Available everywhere. |
+| **Block Scope** | Limited to `{ ... }` (Used by `let`/`const`). |
 
-👉 Real use:
 
-Change content
-Handle events
-Update UI dynamically
+---
+
+In JavaScript, **Recursion** and **Arrays** are fundamental concepts for handling data and solving complex logic. Here is a breakdown of how they work.
+
+---
+
+## 1. Recursion
+**Recursion** is a technique where a function calls itself to solve a smaller version of the same problem. 
+
+To prevent a function from calling itself forever (causing a "stack overflow"), every recursive function needs two things:
+1.  **Base Case:** The condition where the function stops calling itself.
+2.  **Recursive Step:** The part where the function calls itself with a modified argument.
+
+### Example: Factorial
+Calculating $5!$ (which is $5 \times 4 \times 3 \times 2 \times 1$):
+
+```javascript
+function factorial(n) {
+    // Base Case
+    if (n === 1) return 1;
+    
+    // Recursive Step
+    return n * factorial(n - 1);
+}
+
+console.log(factorial(5)); // 120
+```
+
+
+
+---
+
+## 2. Arrays: Declaration & Allocation
+An **Array** is a special variable that can hold more than one value at a time. In JavaScript, memory **allocation** for arrays is dynamic, meaning you don't have to specify the size upfront.
+
+### Declaration
+You can declare an array using the literal syntax (preferred) or the constructor.
+```javascript
+// Literal Syntax
+const fruits = ["Apple", "Banana", "Cherry"];
+
+// Array Constructor
+const numbers = new Array(10, 20, 30);
+```
+
+---
+
+## 3. Accessing Arrays
+Array elements are stored at numeric positions called **indexes**. 
+> **Important:** JavaScript arrays are **zero-indexed** (the first element is at index 0).
+
+```javascript
+const colors = ["Red", "Green", "Blue"];
+
+console.log(colors[0]); // "Red"
+console.log(colors[1]); // "Green"
+
+// Changing an element (Modification)
+colors[2] = "Yellow"; 
+console.log(colors); // ["Red", "Green", "Yellow"]
+```
+
+---
+
+## 4. Sorting Arrays
+JavaScript provides a built-in `.sort()` method. However, by default, it sorts values as **strings**, which can lead to unexpected results with numbers.
+
+### Sorting Strings
+```javascript
+const names = ["Zack", "Alice", "Ben"];
+names.sort(); 
+console.log(names); // ["Alice", "Ben", "Zack"]
+```
+
+### Sorting Numbers
+To sort numbers correctly, you must provide a **compare function**. Without it, `"25"` comes before `"5"` because "2" is smaller than "5" in string comparison.
+
+```javascript
+const scores = [40, 100, 1, 5, 25];
+
+// Ascending Order
+scores.sort((a, b) => a - b); 
+console.log(scores); // [1, 5, 25, 40, 100]
+
+// Descending Order
+scores.sort((a, b) => b - a); 
+console.log(scores); // [100, 40, 25, 5, 1]
+```
+
+
+
+---
+
+## Summary Table
+
+| Operation | Syntax/Method | Key Note |
+| :--- | :--- | :--- |
+| **Declaration** | `const arr = []` | Use square brackets for literal syntax. |
+| **Accessing** | `arr[index]` | Indexes start at **0**. |
+| **Recursion** | `func() { func() }` | Always include a **Base Case**. |
+| **Sorting** | `arr.sort()` | Use a compare function `(a, b) => a - b` for numbers. |
+
+---
+Excellent choice! Mastering these methods will make you a much more efficient developer. In JavaScript, we manipulate arrays using specific methods to add, remove, or find data.
+
+---
+
+## 1. Adding and Removing Elements
+These methods are the "bread and butter" of array manipulation. They allow you to modify the start or end of an array.
+
+
+
+* **`push()`**: Adds an element to the **end** of an array.
+* **`pop()`**: Removes the **last** element and returns it.
+* **`unshift()`**: Adds an element to the **beginning**.
+* **`shift()`**: Removes the **first** element and returns it.
+
+```javascript
+let queue = ["Alice", "Bob"];
+
+queue.push("Charlie");    // ["Alice", "Bob", "Charlie"]
+queue.shift();           // ["Bob", "Charlie"] (removes Alice)
+```
+
+---
+
+## 2. Searching and Finding
+When you have a large list, you need ways to locate specific items.
+
+* **`indexOf()`**: Returns the index of the first occurrence of a value. Returns `-1` if not found.
+* **`includes()`**: Returns `true` or `false` if the value exists.
+* **`find()`**: Returns the **first** element that passes a specific test (condition).
+
+```javascript
+const prices = [10, 25, 40, 55];
+
+// find the first price over 30
+const expensive = prices.find(p => p > 30); 
+console.log(expensive); // 40
+
+console.log(prices.includes(25)); // true
+```
+
+---
+
+## 3. The `splice()` Method
+`splice()` is the "Swiss Army Knife" of arrays. It can add, remove, and replace elements all at once at **any position**.
+
+**Syntax:** `array.splice(startIndex, deleteCount, item1, item2, ...)`
+
+```javascript
+let months = ["Jan", "March", "April"];
+
+// At index 1, delete 0 items, and insert "Feb"
+months.splice(1, 0, "Feb"); 
+console.log(months); // ["Jan", "Feb", "March", "April"]
+
+// At index 2, delete 1 item
+months.splice(2, 1); 
+console.log(months); // ["Jan", "Feb", "April"]
+```
+
+---
+
+## 4. Array Transformation (Modern JS)
+These methods are used to create new arrays based on existing ones without changing the original data.
+
+
+
+* **`map()`**: Creates a **new array** by performing a function on every element.
+* **`filter()`**: Creates a **new array** with elements that pass a test.
+
+```javascript
+const nums = [1, 2, 3, 4];
+
+// Double every number
+const doubled = nums.map(n => n * 2); // [2, 4, 6, 8]
+
+// Keep only even numbers
+const evens = nums.filter(n => n % 2 === 0); // [2, 4]
+```
+
+---
+
+## Summary of Operations
+
+| Method | Description | Modifies Original? |
+| :--- | :--- | :--- |
+| `push` / `pop` | Add/Remove from end | **Yes** |
+| `shift` / `unshift` | Add/Remove from start | **Yes** |
+| `splice` | Add/Remove from middle | **Yes** |
+| `indexOf` | Find index of item | No |
+| `map` | Transform all items | No |
+| `filter` | Select specific items | No |
+
+
+
+---
+
+We have touched on some of these briefly, but let's dive deeper into the technical properties of these **Standard Built-in Objects** and the **Document** object. In JavaScript, almost everything is an object, and these built-ins provide the "heavy lifting" functionality for your code.
+
+---
+
+## 1. The Math Object
+The `Math` object is static, meaning you don't create an instance of it (no `new Math()`). It works like a toolbox for mathematical constants and functions.
+
+* **Constants:** `Math.PI`, `Math.E`.
+* **Rounding:** `Math.floor()` (round down), `Math.ceil()` (round up), `Math.round()` (nearest integer).
+* **Random:** `Math.random()` returns a decimal between 0 and 1.
+
+```javascript
+// Get a random integer between 1 and 10
+let randomInt = Math.floor(Math.random() * 10) + 1;
+console.log(randomInt); 
+
+console.log(Math.sqrt(16)); // 4 (Square root)
+```
+
+---
+
+## 2. The String Object
+Whenever you treat a primitive string like an object (by calling a method), JavaScript temporarily "wraps" it in a String object.
+
+* **Extraction:** `slice(start, end)`, `substring()`.
+* **Search:** `indexOf()`, `lastIndexOf()`, `search()`.
+* **Manipulation:** `replace()`, `trim()` (removes whitespace), `split()` (converts string to array).
+
+```javascript
+let phrase = "I love JavaScript";
+console.log(phrase.slice(7, 17)); // "JavaScript"
+console.log(phrase.split(" "));   // ["I", "love", "JavaScript"]
+```
+
+---
+
+## 3. The Date Object
+Unlike `Math`, you must create an instance of `Date` using the `new` keyword to work with time.
+
+* **Current Time:** `new Date()`
+* **Getters:** `getDate()`, `getDay()`, `getHours()`.
+* **Setters:** `setFullYear()`, `setMonth()`.
+
+```javascript
+let birthday = new Date("1995-12-17T03:24:00");
+console.log(birthday.getDay()); // Returns a number representing the day of the week
+```
+
+
+
+---
+
+## 4. The Number and Boolean Objects
+While we usually use primitive numbers (like `5`) and booleans (`true`), JavaScript provides object wrappers for them to offer specific properties.
+
+* **Number Properties:** `Number.MAX_VALUE`, `Number.MIN_VALUE`, `Number.isInteger()`.
+* **Number Methods:** `toFixed()` (rounds to specific decimals), `toPrecision()`.
+* **Boolean:** Primarily used to check if a value is "truthy" or "falsy". Everything with a "value" is true; everything without a "value" (0, "", null, undefined) is false.
+
+```javascript
+let pi = 3.14159;
+console.log(pi.toFixed(2)); // "3.14" (Returns as string)
+
+console.log(Number.isInteger(10)); // true
+```
+
+---
+
+## 5. The Document Object (DOM)
+The `document` object represents the web page loaded in the browser. It acts as the entry point to the **DOM Tree**. By using this object, you can programmatically change anything on the page.
+
+
+
+### Key Document Tasks:
+1.  **Finding Elements:**
+    * `document.getElementById("id")`
+    * `document.querySelector(".class-name")`
+2.  **Changing Content/Style:**
+    * `.innerHTML`: Changes the HTML inside an element.
+    * `.style.property`: Changes CSS (e.g., `.style.color = "red"`).
+3.  **Creating Elements:**
+    * `document.createElement("div")`
+
+```javascript
+// Simple DOM Manipulation
+const myButton = document.getElementById("submitBtn");
+
+myButton.addEventListener("click", () => {
+    document.body.style.backgroundColor = "yellow";
+    document.title = "Button Clicked!";
+});
+```
+
+---
+
+## Summary Comparison
+
+| Object | Purpose | Static or Instance? |
+| :--- | :--- | :--- |
+| **Math** | Calculations / Constants | **Static** (use `Math.`) |
+| **String** | Text manipulation | Wrapped automatically |
+| **Date** | Handling time and calendar | **Instance** (use `new Date()`) |
+| **Number** | Numeric precision / limits | Both |
+| **Document** | Page structure / HTML | Global Object |
+
+
+---
+
+In modern JavaScript, there are two main ways to create your own custom objects at scale: **Constructor Functions** (the traditional way) and **Classes** (the modern, cleaner way). Both allow you to create a "blueprint" so you can make many similar objects without rewriting code.
+
+---
+
+## 1. Constructor Functions
+Before 2015 (ES6), this was the standard way to create blueprints. You define a function and use the `this` keyword to assign properties.
+
+> **Rule:** Conventionally, constructor functions start with a **Capital Letter**.
+
+```javascript
+function User(name, role) {
+    this.name = name;
+    this.role = role;
+    this.sayHello = function() {
+        console.log("Hello, I am " + this.name);
+    };
+}
+
+// Creating "instances" of the User object
+const user1 = new User("Alice", "Admin");
+const user2 = new User("Bob", "Editor");
+
+user1.sayHello(); // "Hello, I am Alice"
+```
+
+---
+
+## 2. ES6 Classes (The Modern Way)
+Classes are "syntactic sugar" over constructors—they do the same thing but are much easier to read and write. They group data (properties) and actions (methods) perfectly.
+
+### Structure of a Class:
+* **`constructor()`**: A special method that runs automatically when you create a new object.
+* **Methods**: Functions that belong to the object (you don't need the `function` keyword).
+
+```javascript
+class Car {
+    constructor(brand, speed) {
+        this.brand = brand;
+        this.speed = speed;
+    }
+
+    accelerate() {
+        this.speed += 10;
+        console.log(`${this.brand} is now going ${this.speed} km/h`);
+    }
+}
+
+const myCar = new Car("Toyota", 60);
+myCar.accelerate(); // "Toyota is now going 70 km/h"
+```
+
+
+
+---
+
+## 3. The "Prototype" and Inheritance
+One of the most powerful features of objects is **Inheritance**. This allows one object to "absorb" the properties and methods of another.
+
+If you have a `Vehicle` class, you can create a `Bike` class that **extends** it.
+
+```javascript
+class Vehicle {
+    constructor(wheels) {
+        this.wheels = wheels;
+    }
+    move() {
+        console.log("Moving on " + this.wheels + " wheels.");
+    }
+}
+
+// Bike inherits from Vehicle
+class Bike extends Vehicle {
+    constructor() {
+        super(2); // Calls the parent constructor with 2 wheels
+    }
+    ringBell() {
+        console.log("Ring ring!");
+    }
+}
+
+const myBike = new Bike();
+myBike.move();     // "Moving on 2 wheels." (Inherited)
+myBike.ringBell(); // "Ring ring!" (Own method)
+```
+
+
+
+---
+
+## Summary Table: Custom Objects
+
+| Feature | Constructor Function | ES6 Class |
+| :--- | :--- | :--- |
+| **Declaration** | `function MyObj() { ... }` | `class MyObj { ... }` |
+| **Initialization** | Inside the function body | Inside `constructor()` method |
+| **Inheritance** | Using `Object.create()` | Using `extends` and `super()` |
+| **Readability** | Can get messy | Clean and organized |
+
+### Pro-Tip: When to use which?
+In modern development, **Classes** are almost always preferred because they align with how other languages (like Java or Python) work and are much easier for teams to maintain.
+
+Now that you've mastered the building blocks, from variables to custom classes, are you interested in seeing how to handle **Asynchronous JavaScript** (like fetching data from a server)?
+
